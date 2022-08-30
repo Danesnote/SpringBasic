@@ -25,6 +25,7 @@ public class AppConfig {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    //이렇게 사용하지 말 것
     public OrderService orderService1() {
         return new OrderServiceImpl(memberRepository(), new RateDiscountPolicy());
     }
