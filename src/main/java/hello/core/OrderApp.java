@@ -11,16 +11,23 @@ import hello.core.order.OrderServiceImpl;
 public class OrderApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+
+        AppConfig appConfig = new AppConfig();
+
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
+        OrderService orderService1 = appConfig.orderService1();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);
 
         Order order = orderService.createOrder(memberId, "itemA", 10000);
+        Order order1 = orderService1.createOrder(memberId, "ItemB", 20000);
 
         System.out.println("order = " + order);
-        System.out.println("order result =" + order.calculatePrice());
+        System.out.println("order result = " + order.calculatePrice());
+        System.out.println("order1 = " + order1);
+        System.out.println("order1 result = " + order1.calculatePrice());
     }
 }
